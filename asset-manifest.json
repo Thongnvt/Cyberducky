@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/Cyberducky/static/css/main.965797d3.css",
+    "main.js": "/Cyberducky/static/js/main.77648f07.js",
+    "static/js/453.ae42ee90.chunk.js": "/Cyberducky/static/js/453.ae42ee90.chunk.js",
+    "static/media/image6.png": "/Cyberducky/static/media/image6.d0d3d804ee3209d6f15c.png",
+    "static/media/image5.png": "/Cyberducky/static/media/image5.079d0eb7e5bd338efaa2.png",
+    "static/media/image3.png": "/Cyberducky/static/media/image3.fb255fe4c58fab7f4257.png",
+    "static/media/image9.png": "/Cyberducky/static/media/image9.8ce58ad2c5d58a876fa2.png",
+    "static/media/image7.png": "/Cyberducky/static/media/image7.e789a55628a78cc9d9e4.png",
+    "static/media/image2.png": "/Cyberducky/static/media/image2.3854fb9286c1bc26a7fe.png",
+    "static/media/image10.png": "/Cyberducky/static/media/image10.e50af6bfcf3491094b69.png",
+    "static/media/image1.png": "/Cyberducky/static/media/image1.f5d1c696beac75b07cfe.png",
+    "static/media/image4.png": "/Cyberducky/static/media/image4.292279a83965d95774d0.png",
+    "static/media/OIP.jpg": "/Cyberducky/static/media/OIP.a6bd92b2e4c883ef1475.jpg",
+    "static/media/image11.png": "/Cyberducky/static/media/image11.1ed23c4153407b12c915.png",
+    "static/media/image12.png": "/Cyberducky/static/media/image12.e5faa01e95aab1861dd6.png",
+    "static/media/image8.png": "/Cyberducky/static/media/image8.f521c21e700edbda2af8.png",
+    "static/media/banphim.jpg": "/Cyberducky/static/media/banphim.0bc3f072791ba1db7379.jpg",
+    "static/media/keyboard2.jpg": "/Cyberducky/static/media/keyboard2.43806cba54fe5efa34ef.jpg",
+    "static/media/mainlogo.png": "/Cyberducky/static/media/mainlogo.ea067e33172b53296e14.png",
+    "index.html": "/Cyberducky/index.html",
+    "main.965797d3.css.map": "/Cyberducky/static/css/main.965797d3.css.map",
+    "main.77648f07.js.map": "/Cyberducky/static/js/main.77648f07.js.map",
+    "453.ae42ee90.chunk.js.map": "/Cyberducky/static/js/453.ae42ee90.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.965797d3.css",
+    "static/js/main.77648f07.js"
+  ]
+}
