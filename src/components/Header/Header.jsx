@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Header.css';
-
+import mainLogo from '../../assets/mainlogo.png';
 const Header = () => {
     const [cartCount, setCartCount] = useState(0);
 
@@ -11,7 +11,7 @@ const Header = () => {
                 <div className="hotline">
                     <a href="tel:19001809">HOTLINE: 1900 1809   </a>
                 </div>
-                <img src="/mainlogo.png" alt="Logo" className="logo" />
+                <img src={mainLogo} alt="Logo" className="logo" />
                 <div className="account-cart">
                     <a href="/account">TÀI KHOẢN</a>
                     <a href="/cart">GIỎ HÀNG <span className="cart-count">{cartCount}</span></a>
