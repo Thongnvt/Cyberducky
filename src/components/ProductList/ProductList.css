@@ -1,0 +1,56 @@
+.product-list-container {
+    padding: 0 15px; /* Padding to avoid cards sticking to the edges */
+}
+
+.product-list-container .card {
+    border-radius: 20px; /* Make the card corners rounded */
+    border-color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    margin-bottom: 20px; /* Add some space between cards */
+}
+
+.product-list-container .card-img-top {
+    width: 100%;
+    height: 150px; /* Make the image height fixed for a uniform look */
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.product-list-container .card-body {
+    padding: 15px;
+}
+
+.product-list-container .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.product-list-container .card-text {
+    font-size: 1rem;
+    color: #666;
+}
+
+.product-list-container .btn-custom {
+    width: 100%; /* Full width button */
+    background-color: #FFB900; /* Transparent background */
+    color: black; /* Grey text color */
+    border-radius: 10px; /* Rectangle shape */
+    padding: 10px; /* Padding for better appearance */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.product-list-container .btn-custom:hover {
+    background-color: black; /* Black background on hover */
+    color: white; /* White text on hover */
+}
+.product-list-container h2 {
+    margin-top: 80px;
+    margin-bottom: 80px; /* Increase this value as needed */
+    
+}
+
+.product-list-container .row {
+    margin-top: 80px; /* Increase this value as needed */
+}
