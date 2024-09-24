@@ -1,0 +1,65 @@
+/* Center the content and set background color */
+.sign-in-container {
+  display: flex;
+  justify-content: center;
+ /* Center content vertically */
+  background-color: gray;
+  padding: 20px;
+  height: 80vh;
+  flex-direction: column;
+}
+
+.sign-in-container h2 {
+  margin-bottom: 20px;
+  color: black;
+  text-align: center; /* Center the text horizontally */
+}
+.sign-in-container .form-label {
+  width: 80%; /* Set the label width to 80% */
+  margin: 0 auto; /* Center the label horizontally */
+  display: block; /* Ensure the label behaves as a block element */
+}
+/* Style for the input fields */
+.sign-in-container .form-control {
+  width: 80%; /* Adjust this to control the input width (smaller than 100%) */
+  max-width: 6000px; /* Set a maximum width to control input length */
+  margin: 0 auto; /* Center the input field horizontally */
+}
+
+/* Center the button within the container */
+.sign-in-container .btn-primary {
+  margin-top: 20px;
+  background-color: black; /* Set button background to black */
+  border-color: black; /* Set button border color to black */
+  color: white; /* Set button text color to white */
+  display: block;
+  width: 50%; /* Make the button width smaller than 100% */
+  max-width: 150px; /* Set a maximum width for the button */
+
+  margin-left: auto; /* Center the button */
+  margin-right: auto; /* Center the button */
+  text-align: center; /* Center the text inside the button */
+}
+
+/* Hover effect for the button */
+.sign-in-container .btn-primary:hover {
+  background-color: #333; /* Slightly lighter black for hover effect */
+  border-color: #333; /* Border color on hover */
+}
+
+.register-link {
+  margin-top: 15px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+.register-link a {
+  color: #007bff;
+  text-decoration: none;
+  text-align: center;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
