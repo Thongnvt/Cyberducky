@@ -125,6 +125,9 @@ h2 {
 .cart-item-quantity {
     display: flex;
     align-items: center;
+    justify-content: center; /* Center align the buttons and the number */
+    gap: 10px; /* Add some space between the elements */
+    width: auto; /* Let the width adjust naturally */
 }
 
 .cart-item-quantity button {

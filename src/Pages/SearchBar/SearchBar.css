@@ -1,0 +1,88 @@
+/* src/components/SearchModal.css */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.8); /* Set a more opaque white background for better readability */
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 12px; /* Slightly larger border radius */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+    max-width: 600px; /* Limit max width to prevent overly wide modals */
+    width: 100%; /* Full width */
+    height: auto; /* Allow height to adjust based on content */
+    text-align: center;
+}
+
+/* Styles for the search form */
+.search-form {
+    display: flex;
+    justify-content: center; /* Center the search bar */
+    margin-bottom: 20px; /* Add space below the form */
+}
+
+.search-bar { /* Renamed class for the search bar in modal */
+    display: flex;
+    align-items: center; /* Align items vertically */
+    position: relative; /* Position for absolute positioning */
+    width: 100%; /* Make the search bar take full width */
+}
+
+.search-bar input {
+    padding: 10px 40px 10px 10px; /* Padding to leave space for the icon */
+    border-radius: 20px; /* Rounded corners for the input */
+    border: 1px solid #ccc; /* Added border for input */
+    width: 100%; /* Make input full width */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+/* Style for the search icon button */
+.search-icon-modal {
+    position: absolute; /* Position inside the input */
+    right: 10px; /* Adjusted position for better alignment */
+    border: none; /* Remove border */
+    background: transparent; /* Make background transparent */
+    cursor: pointer; /* Change cursor to pointer */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    display: flex; /* Flex to center the icon */
+    align-items: center; /* Center icon vertically */
+    height: 100%; /* Full height of the input */
+}
+
+/* Optional hover effect for the search icon */
+.search-icon-modal:hover {
+    color: #f7c223; /* Change icon color on hover */
+}
+
+/* Close button styling */
+.close-button {
+    padding: 10px 15px; /* Adjust padding as needed */
+    background-color: #f7c223; /* Red background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+    margin-top: 15px; /* Space above the close button */
+}
+
+.close-button:hover {
+    background-color: #5e4908; /* Darker red on hover */
+}
+.results-container {
+    max-height: 300px; /* Limit height */
+    overflow-y: auto; /* Add scroll if content overflows */
+    margin-top: 20px; /* Add some space above */
+}
