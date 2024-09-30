@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Header.css';
 import mainLogo from '../../assets/mainlogo.png';
@@ -15,8 +15,7 @@ const Header = () => {
                 </div>
                 <img src={mainLogo} alt="Logo" className="logo" />
                 <div className="account-cart">
-                    {/* Use Link instead of a */}
-                    <Link to="/login">TÀI KHOẢN</Link>
+                    <Link to="/account">ĐĂNG NHẬP</Link>
                     <Link to="/cart">GIỎ HÀNG <span className="cart-count">{cartCount}</span></Link>
                 </div>
             </div>
@@ -25,19 +24,19 @@ const Header = () => {
                     <Link to="/" className="btn btn-custom-grey">TRANG CHỦ</Link>
                 </div>
                 <div className="col">
-                    <Link to="/keycaps-don" className="btn btn-custom-grey">KEYCAPS ĐƠN</Link>
+                    <Link to="/keycaps-single" className="btn btn-custom-grey">KEYCAPS LẺ</Link>
                 </div>
                 <div className="col">
-                    <Link to="/keycaps-le" className="btn btn-custom-grey">KEYCAPS LẺ</Link>
+                    <Link to="/keycaps-set" className="btn btn-custom-grey">KEYCAPS BỘ</Link>
                 </div>
                 <div className="col">
                     <Link to="/decal-laptop" className="btn btn-custom-grey">DECAL LAPTOP</Link>
                 </div>
                 <div className="col">
-                    <Link to="/bai-viet" className="btn btn-custom-grey">BÀI VIẾT</Link>
+                    <Link to="/articles" className="btn btn-custom-grey">BÀI VIẾT</Link>
                 </div>
                 <div className="col">
-                    <Link to="/ve-cyber-ducky" className="btn btn-custom-grey">VỀ CYBER DUCKY</Link>
+                    <Link to="/about" className="btn btn-custom-grey">VỀ CYBER DUCKY</Link>
                 </div>
             </nav>
         </div>

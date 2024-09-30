@@ -14,13 +14,13 @@
     text-align: center; /* Center the text horizontally */
   }
   .register-container .form-label {
-    width: 50%; /* Set the label width to 80% */
+    width: 80%; /* Set the label width to 80% */
     margin: 0 auto; /* Center the label horizontally */
     display: block; /* Ensure the label behaves as a block element */
   }
   /* Style for the input fields */
   .register-container .form-control {
-    width: 50%; /* Adjust this to control the input width (smaller than 100%) */
+    width: 80%; /* Adjust this to control the input width (smaller than 100%) */
     max-width: 6000px; /* Set a maximum width to control input length */
     margin: 0 auto; /* Center the input field horizontally */
   }

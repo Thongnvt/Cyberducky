@@ -4,4 +4,15 @@
     font-size: 24px; /* Kích thước chữ */
     font-family: 'Montserrat', sans-serif; /* Font chữ */
   }
-  
+.image-carousels { 
+    position: relative;
+    display: inline-block;
+    width: 90%; 
+    padding-left: 10%;
+    padding-bottom: 200px;
+}
+
+.custom-image {
+    width: 100%; 
+    height: auto; 
+}
