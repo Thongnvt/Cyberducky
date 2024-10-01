@@ -1,16 +1,16 @@
-.product-list-container {
+.page-product-container {
     padding: 0 15px; /* Padding to avoid cards sticking to the edges */
     margin-bottom: 10px;
 }
 
-.product-list-container .card {
+.page-product-container .card {
     border-radius: 30px; /* Make the card corners rounded */
     border-color: black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
     margin-bottom: 50px; /* Add some space between cards */
 }
 
-.product-list-container .card-img-top {
+.page-product-container .card-img-top {
     width: 100%;
     height: 100%; /* Make the image height fixed for a uniform look */
     object-fit: cover;
@@ -21,23 +21,23 @@
 
 }
 
-.product-list-container .card-body {
+.page-product-container .card-body {
     padding: 10px;
 }
 
-.product-list-container .card-title {
+.page-product-container .card-title {
     font-size: 1.5rem;
     padding-bottom: 1px;
 }
 
-.product-list-container .card-text {
+.page-product-container .card-text {
     font-size: 1.5rem;
     color: #666;
     padding-top: 2px;
     
 }
 
-.product-list-container .btn-custom {
+.page-product-container .btn-custom {
     width: 100%; /* Full width button */
     background-color: #FFB900; /* Transparent background */
     color: black; /* Grey text color */
@@ -48,11 +48,11 @@
     font-family: "Montserrat", sans-serif;
 }
 
-.product-list-container .btn-custom:hover {
+.page-product-container .btn-custom:hover {
     background-color: black; /* Black background on hover */
     color: white; /* White text on hover */
 }
-.product-list-container h2 {
+.page-product-container h2 {
     margin-top: 30px;
     margin-bottom: 80px; /* Increase this value as needed */
     font-family: "Montserrat", sans-serif;
@@ -60,6 +60,6 @@
     
 }
 
-.product-list-container .row {
+.page-product-container .row {
     margin-top: 80px; /* Increase this value as needed */
 }

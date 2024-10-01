@@ -120,3 +120,87 @@
     margin: 0 auto;
     max-width: 100%;
 }
+
+
+.account-cart-search {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adjust the spacing between elements */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between input and button */
+}
+
+.search-bar input {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+
+.search-icon-header:hover {
+    color: #f7c223; /* Change color on hover */
+}
+
+/* Header.css */
+
+/* Custom styles for the dropdown toggle */
+.dropdown-toggle {
+    color: black;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+
+}
+
+.dropdown-toggle:hover {
+    color: #ccc; /* Hover color */
+}
+
+.btn-link:active {
+    color: #ccc; /* Keep the color the same when active */
+     /* Set the border color to transparent */
+}
+
+
+/* Button link hover style */
+.btn-link:hover {
+    color: #ccc;
+}
+
+.dropdown-menu {
+    /* Adjust margins and padding if necessary */
+    margin: 0; /* Remove any margin that might cause overflow */
+    padding: 0; /* Optional: remove padding if you want a tighter look */
+    padding-right: 5px;
+}
+
+.dropdown-item {
+    padding: 10px 15px; /* Adjust padding for better spacing */
+    color: black; /* Default text color */
+    background-color: transparent; /* Ensure background is transparent */
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+.dropdown-item:hover {
+    color: darkgrey; /* Change only the text color on hover */
+    background-color: transparent; /* Keep background transparent on hover */
+}
+
+/* Remove the background color on active */
+.dropdown-item:active {
+    background-color: transparent; /* Ensure no background color on active */
+}
+
+/* Optional: Add styles for focus state if needed */
+.dropdown-item:focus {
+    outline: none; /* Remove default focus outline */
+    color: darkgrey; /* Keep text color on focus */
+    background-color: transparent; /* Ensure no background color on focus */
+}
+

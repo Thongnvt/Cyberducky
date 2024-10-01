@@ -1,0 +1,21 @@
+.image-aboutus {
+    position: relative;
+    display: block;
+    text-align: center; /* Căn giữa hình ảnh */
+  }
+  
+  .image-aboutus img {
+    max-width: 80%; /* Hình ảnh sẽ không vượt quá 100% của container */
+    width: 80%; /* Kích thước tự động */
+    height: auto; /* Đảm bảo tỷ lệ gốc */
+    margin: 0 auto; /* Căn giữa hình ảnh */
+    padding-bottom: 50px;
+  }
+  .text-aboutus {
+    font-family: 'Montserrat',sans-serif;
+    font-size: 40px;
+    margin-bottom: 700px;
+    font-weight: bold;
+    padding-left: 25%;
+    padding-right: 25%;
+  }
