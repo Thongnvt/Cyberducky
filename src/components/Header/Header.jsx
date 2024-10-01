@@ -1,6 +1,6 @@
 // src/components/Header/Header.js
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Header.css';
@@ -9,13 +9,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
+import { UserContext } from '../../Pages/Login/UserContext'; // Import UserContext
 
 const Header = ({ onSearchClick }) => {
+    const { user, setUser } = useContext(UserContext); // Get user from context
     const [cartCount, setCartCount] = useState(0);
     const [showDropdown, setShowDropdown] = useState(false);
 
     const handleMouseEnter = () => setShowDropdown(true);
     const handleMouseLeave = () => setShowDropdown(false);
+
+    const handleLogout = () => {
+        setUser(null); // Clear user from context on logout
+    };
 
     return (
         <div className="header">
@@ -31,12 +37,21 @@ const Header = ({ onSearchClick }) => {
                         show={showDropdown}
                     >
                         <Dropdown.Toggle as={Button} variant="link" id="dropdown-basic" style={{ textDecoration: 'none' }}>
-                            TÀI KHOẢN
+                            {user ? user.email.split('@')[0] : 'TÀI KHOẢN'} {/* Show email without domain or 'TÀI KHOẢN' */}
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item as={Link} to="/login">ĐĂNG NHẬP</Dropdown.Item>
-                            <Dropdown.Item as={Link} to="/register">ĐĂNG KÝ</Dropdown.Item>
+                            {user ? (
+                                <>
+                                    <Dropdown.Item as={Link} to="/user-details">Chi tiết tài khoản</Dropdown.Item>
+                                    <Dropdown.Item onClick={handleLogout}>Đăng xuất</Dropdown.Item>
+                                </>
+                            ) : (
+                                <>
+                                    <Dropdown.Item as={Link} to="/login">ĐĂNG NHẬP</Dropdown.Item>
+                                    <Dropdown.Item as={Link} to="/register">ĐĂNG KÝ</Dropdown.Item>
+                                </>
+                            )}
                         </Dropdown.Menu>
                     </Dropdown>
                     <Link to="/cart" style={{ marginLeft: '15px' }}>

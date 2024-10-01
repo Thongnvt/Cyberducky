@@ -1,39 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { UserContext } from './UserContext';
 import './Login.css';
 
 function TextControlsExample() {
-    // State for email and password
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    // Hardcoded user data for validation
-    const hardcodedUser = {
-        email: 'thongnvtse171008@fpt.edu.vn', // Change this to your test email
-        password: 'password123' // Change this to your test password
-    };
+    const { setUser } = useContext(UserContext); // Get setUser from UserContext
+    const navigate = useNavigate(); // Hook to programmatically navigate
 
     // Handle form submission
-    const handleSubmit = (e) => {
-        e.preventDefault(); // Prevent default form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-        // Check if email or password is empty
         if (!email || !password) {
             window.alert('Vui lòng điền vào tất cả các trường.');
             return;
         }
 
-        // Validate the email and password against the hardcoded values
-        if (email !== hardcodedUser.email) {
-            window.alert('Tài khoản không tồn tại.');
-        } else if (password !== hardcodedUser.password) {
-            window.alert('Mật khẩu không chính xác.');
-        } else {
-            // Successful login (you can redirect to another page here)
-            window.alert('Đăng nhập thành công!');
-            // Reset form or redirect to another page
+        try {
+            const response = await axios.post('https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/authentication/login', {
+                email,
+                password
+            });
+
+            if (response.status === 200 && response.data.success) {
+                window.alert('Đăng nhập thành công!');
+                setUser({ email }); // Set the global user state
+                navigate('/'); // Redirect to homepage
+            } else {
+                window.alert('Đăng nhập thất bại, vui lòng kiểm tra lại.');
+            }
+        } catch (error) {
+            window.alert('Đã xảy ra lỗi, vui lòng thử lại sau.');
         }
     };
 
