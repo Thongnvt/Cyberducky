@@ -1,0 +1,24 @@
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 3rem; 
+    justify-items: center; 
+    padding: 3rem; 
+    margin-bottom: 300px;
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; 
+    height: 100%;
+    font-family: "Montserrat",sans-serif;
+  }
+  
+  button {
+    margin-top: 20%; 
+    text-align: center; 
+    font-family: "Montserrat",sans-serif;
+  }
+  

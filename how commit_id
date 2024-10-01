@@ -1,0 +1,71 @@
+[33mcommit fdaf36f76ed0838f6078122cef7808aadd47258a[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Nguyen Thong <bocuas1mple@gmail.com>
+Date:   Tue Oct 1 17:04:26 2024 +0700
+
+    register and stuff
+
+[33mcommit 73f1294f005f9d73c19f1c5313f4c984bda37ec7[m
+Author: Nguyen Thong <bocuas1mple@gmail.com>
+Date:   Tue Oct 1 16:49:17 2024 +0700
+
+    register and login
+
+[33mcommit e606e804fe0fa45760b0c1c029216085e7d2a07b[m
+Author: Nguyen Thong <bocuas1mple@gmail.com>
+Date:   Tue Oct 1 16:47:56 2024 +0700
+
+    register and login
+
+[33mcommit 0ff240dddf954e960b6d801cf284b0c03d0fa0c9[m
+Author: Nguyen Thong <bocuas1mple@gmail.com>
+Date:   Tue Oct 1 16:43:37 2024 +0700
+
+    Login and Register
+
+[33mcommit 6f596cdb1f3b4de3443e90aa97b2fd233b6a2942[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Nguyen Thong <bocuas1mple@gmail.com>
+Date:   Mon Sep 30 16:47:20 2024 +0700
+
+    Search add
+
+[33mcommit ea5026f71ffcd2f234358b0f0bfa6c43b45e3c1e[m
+Author: Nguyen Thong <bocuas1mple@gmail.com>
+Date:   Mon Sep 30 12:57:43 2024 +0700
+
+    Initial change
+
+[33mcommit e7f9e9480e8c680440bce325a027719428858b5d[m
+Author: Nguyen Thong <bocuas1mple@gmail.com>
+Date:   Tue Sep 24 20:44:24 2024 +0700
+
+    Add login, register
+
+[33mcommit 494a95fefca0ff1c04f9dcf72f50879a8236b4de[m
+Author: Nguyen Thong <bocuas1mple@gmail.com>
+Date:   Mon Sep 16 13:46:35 2024 +0700
+
+    Minor change
+
+[33mcommit 0bc9d35c173cdcfa8b53e0df512b019d1654f8dc[m
+Author: Nguyen Thong <bocuas1mple@gmail.com>
+Date:   Mon Sep 16 13:02:35 2024 +0700
+
+    Change minor error
+
+[33mcommit 416c405737774ec886e933c36e9dbe3b5eafb8ac[m
+Author: Nguyen Thong <bocuas1mple@gmail.com>
+Date:   Mon Sep 16 11:43:54 2024 +0700
+
+    Change in hosting URL and minor error
+
+[33mcommit 01a802673aa0c15636ddc596613420a641749663[m
+Author: Nguyen Thong <bocuas1mple@gmail.com>
+Date:   Mon Sep 16 11:19:06 2024 +0700
+
+    Initial commit
+
+[33mcommit 8467a1abb173bb53c846f08c2f66dbb0e21d5cd2[m
+Author: Nguyen Thong <bocuas1mple@gmail.com>
+Date:   Thu May 30 18:52:36 2024 +0700
+
+    Initialize project using Create React App
