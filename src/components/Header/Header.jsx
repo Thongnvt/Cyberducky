@@ -7,11 +7,8 @@ import './Header.css';
 import mainLogo from '../../assets/mainlogo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-<<<<<<< HEAD
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
-=======
->>>>>>> 6f596cdb1f3b4de3443e90aa97b2fd233b6a2942
 
 const Header = ({ onSearchClick }) => {
     const [cartCount, setCartCount] = useState(0);
@@ -28,7 +25,6 @@ const Header = ({ onSearchClick }) => {
                 </div>
                 <img src={mainLogo} alt="Logo" className="logo" />
                 <div className="account-cart" style={{ display: 'flex', alignItems: 'center' }}>
-<<<<<<< HEAD
                     <Dropdown
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -46,10 +42,6 @@ const Header = ({ onSearchClick }) => {
                     <Link to="/cart" style={{ marginLeft: '15px' }}>
                         GIỎ HÀNG <span className="cart-count">{cartCount}</span>
                     </Link>
-=======
-                    <Link to="/account">ĐĂNG NHẬP</Link>
-                    <Link to="/cart">GIỎ HÀNG <span className="cart-count">{cartCount}</span></Link>
->>>>>>> 6f596cdb1f3b4de3443e90aa97b2fd233b6a2942
                     <div className="search-icon-header" onClick={onSearchClick} style={{ marginLeft: '15px', cursor: 'pointer' }}>
                         <FontAwesomeIcon icon={faSearch} />
                     </div>
