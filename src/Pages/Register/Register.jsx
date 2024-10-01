@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios'; // Import Axios
 import './Register.css'; // Optional, if you want to style it differently from login
 
 function TextControlsExample() {
+    // Updated formData to include full-name
     const [formData, setFormData] = useState({
-        name: '',
-        accountName: '',
+        fullName: '', // Changed to fullName to match the input field
         email: '',
         password: '',
         confirmPassword: '',
-        phoneNumber: '' // Added phone number field
+        phoneNumber: ''
     });
 
     const handleInputChange = (e) => {
@@ -21,57 +22,62 @@ function TextControlsExample() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent form submission
 
-        // Validation: Check if any fields are empty
-        if (!formData.name || !formData.accountName || !formData.email || !formData.password || !formData.confirmPassword || !formData.phoneNumber) {
+        // Validation
+        if (!formData.fullName || !formData.email || !formData.password || !formData.confirmPassword || !formData.phoneNumber) {
             window.alert('Vui lòng điền vào tất cả các trường bắt buộc.');
             return;
         }
 
-        // Additional validation for matching passwords
         if (formData.password !== formData.confirmPassword) {
             window.alert('Mật khẩu và xác nhận mật khẩu không khớp.');
             return;
         }
 
-        // Validate email format
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(formData.email)) {
-            window.alert('Email không hợp lệ.');
+        const phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(formData.phoneNumber)) {
+            window.alert('Số điện thoại phải là 10 chữ số.');
             return;
         }
 
-        // Form is valid, proceed with submission (e.g., API call)
-        console.log('Form submitted successfully', formData);
-        // You can redirect or handle successful registration here
+        // Proceed with API call
+        try {
+            // Create the payload to match API expectations
+            const payload = {
+                email: formData.email,
+                password: formData.password,
+                "full-name": formData.fullName, // Map fullName to full-name
+                "telephone-number": formData.phoneNumber // Map phoneNumber to telephone-number
+            };
+
+            const response = await axios.post('https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/authentication/register', payload);
+            console.log('Registration successful:', response.data);
+            // Handle success (e.g., redirect or show a success message)
+            window.alert('Đăng ký thành công!');
+        } catch (error) {
+            console.error('There was an error registering:', error);
+            window.alert('Đăng ký không thành công. Vui lòng thử lại.');
+        }
     };
 
     return (
         <div className="register-container">
             <h2>Đăng ký tài khoản</h2>
             <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="name">
-                    <Form.Label>Tên <span className="required">*</span>:</Form.Label>
+                {/* Full Name Field */}
+                <Form.Group className="mb-3" controlId="fullName">
+                    <Form.Label>Tên đầy đủ <span className="required">*</span>:</Form.Label>
                     <Form.Control
                         type="text"
-                        placeholder="Nhập tên.."
-                        value={formData.name}
+                        placeholder="Nhập tên đầy đủ.."
+                        value={formData.fullName}
                         onChange={handleInputChange}
                     />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="accountName">
-                    <Form.Label>Tên tài khoản <span className="required">*</span>:</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Nhập tên tài khoản.."
-                        value={formData.accountName}
-                        onChange={handleInputChange}
-                    />
-                </Form.Group>
-
+                {/* Email Field */}
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Email <span className="required">*</span>:</Form.Label>
                     <Form.Control
@@ -82,8 +88,9 @@ function TextControlsExample() {
                     />
                 </Form.Group>
 
+                {/* Phone Number Field */}
                 <Form.Group className="mb-3" controlId="phoneNumber">
-                    <Form.Label>Số điện thoại:</Form.Label>
+                    <Form.Label>Số điện thoại <span className="required">*</span>:</Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Nhập số điện thoại.."
@@ -92,6 +99,7 @@ function TextControlsExample() {
                     />
                 </Form.Group>
 
+                {/* Password Field */}
                 <Form.Group className="mb-3" controlId="password">
                     <Form.Label>Mật khẩu <span className="required">*</span>:</Form.Label>
                     <Form.Control
@@ -102,6 +110,7 @@ function TextControlsExample() {
                     />
                 </Form.Group>
 
+                {/* Confirm Password Field */}
                 <Form.Group className="mb-3" controlId="confirmPassword">
                     <Form.Label>Xác nhận mật khẩu <span className="required">*</span>:</Form.Label>
                     <Form.Control
