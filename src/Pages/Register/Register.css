@@ -6,6 +6,7 @@
     padding: 20px;
     height: 80vh;
     flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
   }
   
   .register-container h2 {

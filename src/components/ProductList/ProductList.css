@@ -57,9 +57,11 @@
     margin-bottom: 80px; /* Increase this value as needed */
     font-family: "Montserrat", sans-serif;
     font-size:  60px;
+    padding: 50px;
     
 }
 
 .product-list-container .row {
     margin-top: 80px; /* Increase this value as needed */
+    padding: 100px;
 }

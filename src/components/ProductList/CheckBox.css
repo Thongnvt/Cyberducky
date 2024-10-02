@@ -1,0 +1,38 @@
+/* Custom styles for the checkbox */
+.custom-checkbox .form-check-input {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #02080f;
+    background-color: white;
+    cursor: pointer;
+    margin-left: 80px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+}
+
+/* Style when checkbox is checked */
+.custom-checkbox .form-check-input:checked {
+    background-color: #dca014;
+    border-color: #02060b;  
+}
+
+/* Custom styles for the label */
+.custom-checkbox .form-check-label {
+    font-size: 1.5rem;
+    margin-left: 10px;
+    cursor: pointer;
+    
+}
+
+.form-check-label{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.me-2{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    margin-left: 110px;
+    font-weight: bold;
+
+}
+
