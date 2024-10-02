@@ -1,0 +1,30 @@
+a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    margin-left: 110px;
+}
+
+.breadcrumb-item.active{
+    color: black;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+/* src/Pages/BreadCrumb/BreadcrumbComponent.css */
+
+.line-separator {
+    width: 100%;          /* Full width */
+    height: 3px;         /* Thickness of the line */
+    background-color: #000306; /* Color of the line (adjust as needed) */
+    margin: 20px 0; 
+
+         /* Space above and below the line */
+}

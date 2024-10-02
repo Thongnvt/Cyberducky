@@ -9,7 +9,7 @@ function CheckExample({ onChange }) {
                 <Form.Check
                     type="checkbox"
                     id="default-checkbox"
-                    label="Sort by ascending price"
+                    label="Giá Tăng Dần"
                     className="custom-checkbox" // Custom class for styling
                     onChange={(e) => onChange(e.target.checked)}
                 />

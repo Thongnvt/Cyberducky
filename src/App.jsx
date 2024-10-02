@@ -1,7 +1,7 @@
 // src/App.jsx
 
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 import HomePage from './components/HomePage/HomePage';
 import DecalLaptop from './components/DecalLaptop/DecalLaptop';
@@ -14,12 +14,15 @@ import KeycapSet from './components/KeycapSet/KeycapSet';
 import SingleKeycap from './components/SingleKeycap/SingleKeycap';
 import Articles from './components/Articles/Articles';
 import Cart from './Pages/Cart/Cart';
-import SearchModal from './Pages/SearchBar/SearchBar'; // Import the SearchModal component
-import SearchResultsPage from './components/searchPageResults/searchPageResults'
+import SearchModal from './Pages/SearchBar/SearchBar';
+import SearchResultsPage from './components/searchPageResults/searchPageResults';
 import { UserProvider } from './Pages/Login/UserContext';
+import BreadcrumbComponent from './Pages/BreadCrumb/BreadCrumb';
 
-const App = () => {
-  const [isModalOpen, setModalOpen] = useState(false); // State to control modal visibility
+// Component to render Routes with Breadcrumb
+const AppContent = () => {
+  const location = useLocation(); // Correctly use the useLocation hook
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const handleSearchClick = () => {
     setModalOpen(true);
@@ -29,27 +32,92 @@ const App = () => {
     setModalOpen(false);
   };
 
+  // Function to determine breadcrumb items based on the current route
+  const getBreadcrumbItems = () => {
+    switch (location.pathname) {
+      case '/':
+        return null; // No breadcrumbs for Home
+      case '/decal-laptop':
+        return [
+          { label: 'Home', path: '/' },
+          { label: 'Decal Laptop', path: '/decal-laptop', active: true },
+        ];
+      case '/about':
+        return [
+          { label: 'Home', path: '/' },
+          { label: 'About Us', path: '/about', active: true },
+        ];
+      case '/login':
+        return [
+          { label: 'Home', path: '/' },
+          { label: 'Login', path: '/login', active: true },
+        ];
+      case '/register':
+        return [
+          { label: 'Home', path: '/' },
+          { label: 'Register', path: '/register', active: true },
+        ];
+      case '/keycaps-set':
+        return [
+          { label: 'Home', path: '/' },
+          { label: 'Keycap Set', path: '/keycaps-set', active: true },
+        ];
+      case '/keycaps-single':
+        return [
+          { label: 'Home', path: '/' },
+          { label: 'Single Keycap', path: '/keycaps-single', active: true },
+        ];
+      case '/articles':
+        return [
+          { label: 'Home', path: '/' },
+          { label: 'Articles', path: '/articles', active: true },
+        ];
+      case '/cart':
+        return [
+          { label: 'Home', path: '/' },
+          { label: 'Cart', path: '/cart', active: true },
+        ];
+      case '/search-results':
+        return [
+          { label: 'Home', path: '/' },
+          { label: 'Search Results', path: '/search-results', active: true },
+        ];
+      default:
+        return [];
+    }
+  };
+
+  return (
+    <div>
+      <Header onSearchClick={handleSearchClick} />
+      {/* Conditionally render Breadcrumb only for non-home pages */}
+      {location.pathname !== '/' && (
+        <BreadcrumbComponent items={getBreadcrumbItems()} />
+      )}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/decal-laptop" element={<DecalLaptop />} />
+        <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/keycaps-set" element={<KeycapSet />} />
+        <Route path="/keycaps-single" element={<SingleKeycap />} />
+        <Route path="/articles" element={<Articles />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/search-results" element={<SearchResultsPage />} />
+      </Routes>
+      <Footer />
+      <SearchModal isOpen={isModalOpen} onClose={handleCloseModal} />
+    </div>
+  );
+};
+
+// Main App Component
+const App = () => {
   return (
     <UserProvider>
       <Router>
-        <div>
-          <Header onSearchClick={handleSearchClick} /> {/* Pass the handler to Header */}
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/decal-laptop" element={<DecalLaptop />} />
-            <Route path="/about" element={<AboutUsPage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/keycaps-set" element={<KeycapSet />} />
-            <Route path="/keycaps-single" element={<SingleKeycap />} />
-            <Route path="/articles" element={<Articles />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/search-results" element={<SearchResultsPage />} /> {/* Search results page */}
-          </Routes>
-          <Footer />
-          {/* Include the SearchModal and pass props */}
-          <SearchModal isOpen={isModalOpen} onClose={handleCloseModal} />
-        </div>
+        <AppContent />
       </Router>
     </UserProvider>
   );
