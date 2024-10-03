@@ -18,7 +18,7 @@ import SearchModal from './Pages/SearchBar/SearchBar';
 import SearchResultsPage from './components/searchPageResults/searchPageResults';
 import { UserProvider } from './Pages/Login/UserContext';
 import BreadcrumbComponent from './Pages/BreadCrumb/BreadCrumb';
-
+import ProductDetail from './components/PageDetail/ProductDetail'
 // Component to render Routes with Breadcrumb
 const AppContent = () => {
   const location = useLocation(); // Correctly use the useLocation hook
@@ -105,6 +105,7 @@ const AppContent = () => {
         <Route path="/articles" element={<Articles />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/search-results" element={<SearchResultsPage />} />
+        <Route path="/product/:productName" element={<ProductDetail />} />
       </Routes>
       <Footer />
       <SearchModal isOpen={isModalOpen} onClose={handleCloseModal} />

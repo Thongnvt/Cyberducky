@@ -1,0 +1,91 @@
+.product-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-image {
+    width: 70%;
+    border-radius: 100px;
+    border: 2px solid black;
+    padding: 1px;
+    object-fit: cover;
+    margin-left: 10%;
+    
+}
+
+.product-name {
+    font-family: 'Montserrat',sans-serif;
+}
+.product-price {
+    color: #FF9900;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Montserrat',sans-serif;
+}
+p,h3,h4,h5,.add-to-cart-button,.description-box{
+    font-family: 'Montserrat',sans-serif;
+}
+.variant-selection p,
+.quantity-selection p {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.variant-button {
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.quantity-input {
+    width: 60px;
+    text-align: center;
+}
+
+.mota {
+    font-size: 20px;
+}
+
+.sanphamlienquan {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.add-to-cart-button {
+    margin-top: 20px;
+    background-color: #FF9900;
+    border: none;
+}
+
+.description-box {
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    padding: 20px;
+    height: 200px;
+    margin-top: 20px;
+    border: 2px solid black;
+}
+
+.related-products {
+    margin-top: 20px;
+}
+
+.related-products .card {
+    cursor: pointer;
+    border-radius: 30px;
+    height: 150px;
+    width: 150px;
+    margin-bottom: 50px;
+    padding-top: 50px;
+    margin-top: 30px;
+    border: 2px solid black;
+    justify-content: center;
+    margin-left: 60px;
+}
+
+.related-products .card-img-top {
+    border-radius: 10px;
+    height: 100%;
+    object-fit: cover;
+}

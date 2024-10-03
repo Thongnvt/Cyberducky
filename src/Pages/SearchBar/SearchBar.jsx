@@ -1,5 +1,4 @@
 // src/components/SearchModal.js
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // Import Axios
 import './SearchBar.css'; // CSS for styling

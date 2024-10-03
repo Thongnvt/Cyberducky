@@ -7,6 +7,8 @@ import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './SingleKeycapProduct.css'; // Ensure this is applied properly
 import CheckExample from '../ProductList/CheckBox';
+import slugify from '../../utils/slugify';
+import { Link } from 'react-router-dom';
 
 const ProductList = ({ title }) => {
     const [products, setProducts] = useState([]);
@@ -42,14 +44,16 @@ const ProductList = ({ title }) => {
                 <Row className="g-4">
                     {products.map((product) => (
                         <Col key={product.id} md={3} sm={4} xs={12}>
-                            <Card className="h-100">
-                                <Card.Img variant="top" src={product['image-urls'][0]} alt={product['name-product']} className="card-img-top" />
-                                <Card.Body>
-                                    <Card.Title>{product['name-product']}</Card.Title>
-                                    <Card.Text>{product.price} VND</Card.Text>
-                                    <Button variant="custom" className="btn-custom">Add to cart</Button>
-                                </Card.Body>
-                            </Card>
+                            <Link to={`/product/${slugify(product['name-product'])}`}>
+                                <Card className="h-100">
+                                    <Card.Img variant="top" src={product['image-urls'][0]} alt={product['name-product']} className="card-img-top" />
+                                    <Card.Body>
+                                        <Card.Title>{product['name-product']}</Card.Title>
+                                        <Card.Text>{product.price} VND</Card.Text>
+                                        <Button variant="custom" className="btn-custom">Add to cart</Button>
+                                    </Card.Body>
+                                </Card>
+                            </Link>
                         </Col>
                     ))}
                 </Row>

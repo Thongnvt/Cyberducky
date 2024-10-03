@@ -7,14 +7,15 @@ import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './DecalLaptop.css'; // Ensure this is applied properly
 import CheckExample from '../ProductList/CheckBox';
-
+import { Link } from 'react-router-dom';
+import slugify from '../../utils/slugify';
 const ProductList = ({ title }) => {
     const [products, setProducts] = useState([]);
     const [originalProducts, setOriginalProducts] = useState([]); // Store original product list
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const response = await axios.get('https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/products/type?page=1&pageSize=12&idtype=1');
+            const response = await axios.get('https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/products/type?page=1&pageSize=37&idtype=1');
             setProducts(response.data.data['list-data']);
             setOriginalProducts(response.data.data['list-data']); // Store original product list
         };
@@ -42,14 +43,16 @@ const ProductList = ({ title }) => {
                 <Row className="g-4">
                     {products.map((product) => (
                         <Col key={product.id} md={3} sm={4} xs={12}>
-                            <Card className="h-100">
-                                <Card.Img variant="top" src={product['image-urls'][0]} alt={product['name-product']} className="card-img-top" />
-                                <Card.Body>
-                                    <Card.Title>{product['name-product']}</Card.Title>
-                                    <Card.Text>{product.price} VND</Card.Text>
-                                    <Button variant="custom" className="btn-custom">Add to cart</Button>
-                                </Card.Body>
-                            </Card>
+                            <Link to={`/product/${slugify(product['name-product'])}`}>
+                                <Card className="h-100">
+                                    <Card.Img variant="top" src={product['image-urls'][0]} alt={product['name-product']} className="card-img-top" />
+                                    <Card.Body>
+                                        <Card.Title>{product['name-product']}</Card.Title>
+                                        <Card.Text>{product.price} VND</Card.Text>
+                                        <Button variant="custom" className="btn-custom">Add to cart</Button>
+                                    </Card.Body>
+                                </Card>
+                            </Link>
                         </Col>
                     ))}
                 </Row>
