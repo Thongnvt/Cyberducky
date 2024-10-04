@@ -1,22 +1,23 @@
 .custom-pagination {
-    margin-left: 870px;
+    margin-left: auto;
     font-family: 'Montserrat', sans-serif; /* Thay đổi font chữ */
-    color: #a70bf0;
+    justify-content: center;
   }
   
   .custom-pagination .page-item {
     background-color: #007bff; /* Màu nền cho các item */
-    color: white; /* Màu chữ */
+    color: rgb(201, 67, 67); /* Màu chữ */
     font-size: 16px; /* Kích thước chữ */
     border-radius: 5px; /* Bo tròn góc các item */
   }
   
-  .custom-pagination .page-item:hover {
-    background-color: #f1f505; /* Màu nền khi hover */
-  }
+
   
   .custom-pagination .page-item.active {
     background-color: #28a745; /* Màu nền cho item đang active */
     border-color: #28a745;
   }
   
+  .page-link{
+    margin: auto;
+  }

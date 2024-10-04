@@ -8,6 +8,7 @@ import DarkVariantExample from '../Carousels/Carousels.jsx';
 const HomePage = () => {
 
 
+
   return (
     <div className="home-page">
 

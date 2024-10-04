@@ -1,7 +1,7 @@
 import React from 'react';
 
 import FuildImage from '../DecalLaptop/FuildImage.jsx';
-import Pagination from '../DecalLaptop/Pagination.jsx';
+
 import DecalLaptopProduct from '../DecalLaptop/DecalLaptopProduct.jsx';
 
 const DecalLaptop = () => {
@@ -12,7 +12,7 @@ const DecalLaptop = () => {
 
       <FuildImage />
       <DecalLaptopProduct />
-      <Pagination />
+
 
     </div>
   );

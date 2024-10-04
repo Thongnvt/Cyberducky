@@ -75,3 +75,36 @@
     margin-top: 80px; /* Increase this value as needed */
     padding: 100px;
 }
+
+.custom-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin: auto;
+    
+}
+
+.product-list-container .pagination{
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+}
+
+.product-list-container .page-link{
+    margin: 15px;
+    border-radius: 50px;
+    font-family: "Montserrat", sans-serif;
+    background-color: #FFB900;
+    color: black;
+}
+
+.product-list-container .page-item{
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.product-list-container .page-item active{
+    border-radius: 50px;
+    color: #FFB900;
+}
