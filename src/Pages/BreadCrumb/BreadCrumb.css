@@ -7,6 +7,7 @@ a{
     margin-left: 110px;
 }
 
+
 .breadcrumb-item.active{
     color: black;
     font-weight: bold;
@@ -15,8 +16,13 @@ a{
     align-items: center;
     display: flex;
     justify-content: center;
-
+    
 }
+
+.breadcrumb {
+    padding-top: 20px;
+}
+
 
 /* src/Pages/BreadCrumb/BreadcrumbComponent.css */
 

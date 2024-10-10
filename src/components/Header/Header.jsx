@@ -1,5 +1,3 @@
-// src/components/Header/Header.js
-
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,18 +8,26 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import { UserContext } from '../../Pages/Login/UserContext'; // Import UserContext
-
+import { CartContext } from '../../Pages/Cart/CartContext'; // Import CartContext
+import { useNavigate } from 'react-router-dom';
 const Header = ({ onSearchClick }) => {
     const { user, setUser } = useContext(UserContext); // Get user from context
-    const [cartCount, setCartCount] = useState(0);
+    const { cart, clearCart } = useContext(CartContext); // Get cart from context
     const [showDropdown, setShowDropdown] = useState(false);
+    const navigate = useNavigate();
 
     const handleMouseEnter = () => setShowDropdown(true);
     const handleMouseLeave = () => setShowDropdown(false);
 
     const handleLogout = () => {
+        clearCart();
         setUser(null); // Clear user from context on logout
+        localStorage.removeItem('user'); // Optionally remove user data from local storage
+        localStorage.removeItem('token'); // Optionally remove token from local storage
+        navigate('/'); // Redirect to home page
     };
+
+
 
     return (
         <div className="header">
@@ -55,7 +61,7 @@ const Header = ({ onSearchClick }) => {
                         </Dropdown.Menu>
                     </Dropdown>
                     <Link to="/cart" style={{ marginLeft: '15px' }}>
-                        GIỎ HÀNG <span className="cart-count">{cartCount}</span>
+                        GIỎ HÀNG <span className="cart-count">{cart.length}</span> {/* Update cart count */}
                     </Link>
                     <div className="search-icon-header" onClick={onSearchClick} style={{ marginLeft: '15px', cursor: 'pointer' }}>
                         <FontAwesomeIcon icon={faSearch} />

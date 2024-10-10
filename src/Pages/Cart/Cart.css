@@ -141,4 +141,29 @@ h2 {
 .cart-item-quantity span {
     margin: 0 10px;
     font-size: 18px;
+    margin-top: 20px;
+}
+.empty-cart {
+    display: flex;                /* Use flexbox */
+    flex-direction: column;      /* Stack items vertically */
+    align-items: center;         /* Center horizontally */
+    justify-content: center;      /* Center vertically */
+    margin-top: 20px;           /* Optional: add some space above */
+}
+
+.empty-cart img {
+    max-width: 1170px;            /* Adjust the size as needed */
+    margin-bottom: 0px;         /* Space below the image */
+    padding: 10px;               /* Add padding around the image */
+}
+
+.cart-item-image-container {
+ /* Set a fixed height for the image container */
+    overflow: hidden; /* Hide overflow if the image exceeds the container */
+}
+
+.cart-item-image {
+    width: 100%;  /* Ensure the image fills the container width */
+    height: 100%; /* Ensure the image fills the container height */
+    object-fit: cover; /* This makes the image cover the entire container without distortion */
 }

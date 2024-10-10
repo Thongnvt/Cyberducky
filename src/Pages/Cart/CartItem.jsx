@@ -13,7 +13,7 @@ const CartItem = ({ imageSrc, name, price }) => {
     return (
         <div className="cart-item">
             <div className="cart-item-image-container">
-                <Image src="D:\Fall 2024\exe101\exe101\exe101\src\assets\trang chủ\image4.png" alt={name} className="cart-item-image" thumbnail />
+                <Image src={imageSrc} alt={name} className="cart-item-image" />
             </div>
             <div className="cart-item-details">
                 <h4>{name}</h4>

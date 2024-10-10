@@ -18,7 +18,16 @@ import SearchModal from './Pages/SearchBar/SearchBar';
 import SearchResultsPage from './components/searchPageResults/searchPageResults';
 import { UserProvider } from './Pages/Login/UserContext';
 import BreadcrumbComponent from './Pages/BreadCrumb/BreadCrumb';
-import ProductDetail from './components/PageDetail/ProductDetail'
+import ProductDetail from './components/PageDetail/ProductDetail';
+import StaffPage from './components/Dashboard/StaffPage';
+import Dashboard from './components/Dashboard/Dashboard';
+import ManageOrders from './components/Dashboard/ManageOrders';
+import ManageCustomers from './components/Dashboard/ManageCustomers';
+import { CartProvider } from './Pages/Cart/CartContext';
+import UserDetails from './Pages/UserDetail/UserDetail';
+import { UserContext } from './Pages/Login/UserContext';
+
+
 // Component to render Routes with Breadcrumb
 const AppContent = () => {
   const location = useLocation(); // Correctly use the useLocation hook
@@ -90,6 +99,7 @@ const AppContent = () => {
   return (
     <div>
       <Header onSearchClick={handleSearchClick} />
+
       {/* Conditionally render Breadcrumb only for non-home pages */}
       {location.pathname !== '/' && (
         <BreadcrumbComponent items={getBreadcrumbItems()} />
@@ -106,6 +116,11 @@ const AppContent = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/search-results" element={<SearchResultsPage />} />
         <Route path="/product/:productName" element={<ProductDetail />} />
+        <Route path="/login/staff" element={<StaffPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/orders" element={<ManageOrders />} />
+        <Route path="/customers" element={<ManageCustomers />} />
+        <Route path="/user-details" element={<UserDetails />} />
       </Routes>
       <Footer />
       <SearchModal isOpen={isModalOpen} onClose={handleCloseModal} />
@@ -115,11 +130,14 @@ const AppContent = () => {
 
 // Main App Component
 const App = () => {
+
   return (
     <UserProvider>
-      <Router>
-        <AppContent />
-      </Router>
+      <CartProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </CartProvider>
     </UserProvider>
   );
 };

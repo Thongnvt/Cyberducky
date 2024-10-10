@@ -1,0 +1,69 @@
+
+.manage-orders {
+    padding: 20px;
+    background-color: #f8f9fa; 
+    font-family: 'Montserrat',sans-serif;
+  }
+  
+.manage-orders h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 50px;
+    text-align: center; 
+    font-family: 'Montserrat',sans-serif;
+  }
+
+  
+
+.table tbody td {
+    padding: 10px 15px;
+    text-align: center; 
+    vertical-align: middle; 
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .table tbody td button {
+    margin: 5px; 
+  }
+  
+  
+  .manage-orders .table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .manage-orders .table th {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-family: 'Montserrat',sans-serif;
+  }
+  
+  .manage-orders .table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 15px;
+  }
+  
+  .manage-orders .table td button {
+    margin: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .manage-orders .table td button:hover {
+    background-color: #0056b3;
+    color: white;
+  }
+  
+
+  .manage-orders .table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  

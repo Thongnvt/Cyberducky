@@ -1,0 +1,42 @@
+/* Tổng thể */
+.manage-customers {
+    padding: 20px;
+    background-color: #f0f4f8; /* Màu nền nhẹ */
+    font-family: 'Montserrat',sans-serif;
+  }
+  
+  .manage-customers h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 50px;
+    text-align: center;
+    font-family: 'Montserrat',sans-serif;
+  }
+  
+  /* Bảng quản lý khách hàng */
+  .manage-customers .table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .manage-customers .table th {
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .manage-customers .table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 15px;
+    font-family: 'Montserrat',sans-serif;
+  }
+  
+  .manage-customers .table tbody tr:hover {
+    background-color: #e9ecef;
+  }
+  
