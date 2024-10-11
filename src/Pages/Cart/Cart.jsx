@@ -3,6 +3,7 @@ import CartItem from './CartItem';
 import './Cart.css';
 import { CartContext } from './CartContext'; // Import the CartContext
 import emptyCartImage from '../../assets/giỏ hàng rõ.png';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const { cart } = useContext(CartContext); // Get the cart from the context
@@ -39,8 +40,13 @@ const Cart = () => {
             )}
 
             <div className="cart-buttons">
-                <button className="checkout-button">THANH TOÁN</button>
-                <button className="back-button">VỀ TRANG CHỦ</button>
+                {/* Use Link for navigation to the payment section */}
+                <Link to="/payment">
+                    <button className="checkout-button">THANH TOÁN</button>
+                </Link>
+                <Link to="/">
+                    <button className="back-button">VỀ TRANG CHỦ</button>
+                </Link>
             </div>
         </div>
     );

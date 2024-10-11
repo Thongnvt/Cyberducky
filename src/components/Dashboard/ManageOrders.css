@@ -6,12 +6,13 @@
   }
   
 .manage-orders h1 {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     color: #333;
     margin-bottom: 50px;
     text-align: center; 
     font-family: 'Montserrat',sans-serif;
+    
   }
 
   
@@ -66,4 +67,6 @@
   .manage-orders .table tbody tr:hover {
     background-color: #f1f1f1;
   }
+  
+
   

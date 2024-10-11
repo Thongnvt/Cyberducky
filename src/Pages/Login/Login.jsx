@@ -86,7 +86,7 @@ function TextControlsExample() {
                 <p>Bạn chưa có tài khoản? <Link to="/register">Đăng ký ngay!!</Link></p>
             </div>
             <div className="staff-link">
-                <p><Link to="/login/staff">Staff</Link></p>
+                <p>Đăng nhập cho staff<Link to="/login/staff">Staff</Link></p>
             </div>
 
             {/* Modal for successful login or errors */}

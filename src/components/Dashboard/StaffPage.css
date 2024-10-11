@@ -1,5 +1,42 @@
 .staffpage {
+    min-height: 10vh; /* Đặt chiều cao tối thiểu */
     display: flex;
-    justify-content: center;
-}
+    flex-direction: column;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: center; /* Đưa Navbar về giữa */
+    align-items: center;
+    border-radius: 30px;
+    padding: 15px;
+  }
+  
+  .navbar .navbar-brand {
+    font-size: 1.5rem; /* Tăng kích thước chữ cho "Admin Dashboard" */
+    margin-right: auto; /* Đẩy phần Brand về bên trái */
+  }
+  
+  .navbar .nav {
+    display: flex;
+    justify-content: space-around; /* Giãn đều các link */
+    align-items: center;
+    width: 50%; /* Điều chỉnh độ rộng của navbar links */
+  }
+  
+  .navbar .nav-link {
+    color: white !important; /* Màu chữ của các liên kết */
+    font-size: 1.2rem; /* Tăng kích thước chữ */
+    padding: 0.5rem 1rem; /* Khoảng cách giữa các liên kết */
+  }
+  
+  .navbar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Thêm hiệu ứng hover */
+    border-radius: 10px;
+  }
+  
+  body {
+    font-family: Montserrat, sans-serif; /* Sử dụng font Montserrat nếu có */
+  }
+  
   

@@ -1,5 +1,3 @@
-// src/App.jsx
-
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
@@ -25,12 +23,12 @@ import ManageOrders from './components/Dashboard/ManageOrders';
 import ManageCustomers from './components/Dashboard/ManageCustomers';
 import { CartProvider } from './Pages/Cart/CartContext';
 import UserDetails from './Pages/UserDetail/UserDetail';
-import { UserContext } from './Pages/Login/UserContext';
-
+import Payment from './components/TransactionDetail/TransactionDetail';
+import SuccessPage from './components/TransactionDetail/TransactionSuccess';
 
 // Component to render Routes with Breadcrumb
 const AppContent = () => {
-  const location = useLocation(); // Correctly use the useLocation hook
+  const location = useLocation();
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleSearchClick = () => {
@@ -45,7 +43,7 @@ const AppContent = () => {
   const getBreadcrumbItems = () => {
     switch (location.pathname) {
       case '/':
-        return null; // No breadcrumbs for Home
+        return null;
       case '/decal-laptop':
         return [
           { label: 'Home', path: '/' },
@@ -96,14 +94,19 @@ const AppContent = () => {
     }
   };
 
+  // Check if the current route is the Staff Page or Dashboard
+  const isStaffOrDashboardPage = location.pathname === '/login/staff' || location.pathname === '/dashboard' || location.pathname === '/orders' || location.pathname === '/customers';
+
   return (
     <div>
-      <Header onSearchClick={handleSearchClick} />
+      {/* Conditionally render Header only for non-staff and non-dashboard pages */}
+      {!isStaffOrDashboardPage && <Header onSearchClick={handleSearchClick} />}
 
       {/* Conditionally render Breadcrumb only for non-home pages */}
-      {location.pathname !== '/' && (
+      {location.pathname !== '/' && !isStaffOrDashboardPage && (
         <BreadcrumbComponent items={getBreadcrumbItems()} />
       )}
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/decal-laptop" element={<DecalLaptop />} />
@@ -121,8 +124,13 @@ const AppContent = () => {
         <Route path="/orders" element={<ManageOrders />} />
         <Route path="/customers" element={<ManageCustomers />} />
         <Route path="/user-details" element={<UserDetails />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/success" element={<SuccessPage />} />
       </Routes>
-      <Footer />
+
+      {/* Conditionally render Footer only for non-staff and non-dashboard pages */}
+      {!isStaffOrDashboardPage && <Footer />}
+
       <SearchModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
@@ -130,7 +138,6 @@ const AppContent = () => {
 
 // Main App Component
 const App = () => {
-
   return (
     <UserProvider>
       <CartProvider>
