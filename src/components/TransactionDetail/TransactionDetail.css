@@ -40,11 +40,12 @@ h2, h3 {
 }
 
 .cart-item img {
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 5px;
-    margin-right: 20px;
+    margin: 2px;
+
 }
 
 .cart-item-details p {
@@ -105,8 +106,8 @@ h2, h3 {
     }
 
     .cart-item img {
-        width: 60px;
-        height: 60px;
+        width: 137px;
+        height: 100px;
     }
 
     .order-button {

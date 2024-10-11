@@ -21,9 +21,9 @@ const Cart = () => {
                     cart.map(item => (
                         <CartItem
                             key={item.id}
-                            name={item['name-product']} // Adjust the property name according to your product object
+                            name={item['name-product']}
                             price={item.price}
-                            imageSrc={item['image-urls'][0]} // Adjust for image
+                            imageSrc={item['image-urls'][0]}
                         />
                     ))
                 ) : (
