@@ -17,6 +17,19 @@ const SuccessModal = ({ isOpen, onClose }) => (
     </Modal>
 );
 
+const CancelOrderModal = ({ isOpen, onClose, onConfirm }) => (
+    <Modal show={isOpen} onHide={onClose}>
+        <Modal.Header closeButton>
+            <Modal.Title>Xác nhận hủy đơn hàng</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Bạn có chắc chắn muốn hủy đơn hàng này?</Modal.Body>
+        <Modal.Footer>
+            <button onClick={onConfirm} className="confirm-cancel-btn">Có, hủy đơn hàng</button>
+            <button onClick={onClose}>Không</button>
+        </Modal.Footer>
+    </Modal>
+);
+
 const TransactionDetail = () => {
     const navigate = useNavigate(); // Initialize useNavigate hook for navigation
     const { cart, clearCart } = useContext(CartContext); // Retrieve cart and clearCart from CartContext
@@ -33,6 +46,7 @@ const TransactionDetail = () => {
     const [paymentMethod, setPaymentMethod] = useState('');
     const [totalCost, setTotalCost] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
+    const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
 
     // Calculate total cost when cart updates
     useEffect(() => {
@@ -110,9 +124,24 @@ const TransactionDetail = () => {
         }
     };
 
-    const handleCloseModal = () => {
-        setIsModalOpen(false); // Close the modal
+    const handleCancelOrder = () => {
+        setIsCancelModalOpen(true); // Show the cancel confirmation modal
     };
+
+    const handleConfirmCancel = () => {
+        setIsCancelModalOpen(false);
+        clearCart(); // Clear cart when order is canceled
+        navigate('/cancel-success'); // Redirect to cancellation success page
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false); // Close success modal
+    };
+
+    const handleCloseCancelModal = () => {
+        setIsCancelModalOpen(false); // Close cancel modal
+    };
+
 
     return (
         <div className="transaction-detail-container">
@@ -238,10 +267,12 @@ const TransactionDetail = () => {
                 </div>
 
                 <button type="submit" className="order-button">Đặt hàng</button>
+                <button onClick={handleCancelOrder} className="cancel-button">Hủy đơn hàng</button>
             </form>
 
             {/* Success Modal */}
             <SuccessModal isOpen={isModalOpen} onClose={handleCloseModal} />
+            <CancelOrderModal isOpen={isCancelModalOpen} onClose={handleCloseCancelModal} onConfirm={handleConfirmCancel} />
         </div>
     );
 };

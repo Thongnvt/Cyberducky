@@ -50,6 +50,7 @@ const Header = ({ onSearchClick }) => {
                             {user ? (
                                 <>
                                     <Dropdown.Item as={Link} to="/user-details">Chi tiết tài khoản</Dropdown.Item>
+                                    <Dropdown.Item as={Link} to="/custom">Custom</Dropdown.Item>
                                     <Dropdown.Item onClick={handleLogout}>Đăng xuất</Dropdown.Item>
                                 </>
                             ) : (
