@@ -218,10 +218,10 @@ const TransactionDetail = () => {
                     {cart.map((item, index) => (
                         <div key={index} className="cart-item">
                             <div className="cart-item-image-container">
-                                <img src={item['image-urls'][0]} alt={item['name-product']} className="cart-item-image" />
+                                <img src={item['imageUrls'][0]} alt={item['nameProduct']} className="cart-item-image" />
                             </div>
                             <div className="cart-item-details">
-                                <p>{item['name-product']}</p>
+                                <p>{item['nameProduct']}</p>
                                 <p>{item.price.toLocaleString()}đ</p>
                             </div>
                         </div>
