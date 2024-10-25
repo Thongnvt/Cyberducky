@@ -27,6 +27,7 @@ import Payment from './components/TransactionDetail/TransactionDetail';
 import SuccessPage from './components/TransactionDetail/TransactionSuccess';
 import Custom from './Pages/Custom/Custom';
 import CancelOrder from './components/TransactionDetail/TransactionCancel';
+import CustomSuccess from './Pages/Custom/CustomSuccess';
 
 // Component to render Routes with Breadcrumb
 const AppContent = () => {
@@ -130,6 +131,7 @@ const AppContent = () => {
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/custom" element={<Custom />} />
         <Route path="/cancel-success" element={<CancelOrder />} />
+        <Route path="/custom-success" element={<CustomSuccess />} />
       </Routes>
 
       {/* Conditionally render Footer only for non-staff and non-dashboard pages */}

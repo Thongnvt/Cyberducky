@@ -1,58 +1,103 @@
-/* src/App.css */
-
-/* Thiết lập font chữ toàn cục */
-body {
-    font-family: sans-serif; /* Thay đổi font chữ */
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4; /* Màu nền */
+/* Đặt kiểu chung cho form */
+form {
+    max-width: 500px; /* Đặt chiều rộng tối đa cho form */
+    margin: auto; /* Giữa form trên trang */
+    padding: 20px; /* Khoảng cách bên trong form */
+    border: 1px solid #ddd; /* Đường viền cho form */
+    border-radius: 8px; /* Bo tròn các góc */
+    background-color: #f9f9f9; /* Màu nền nhẹ cho form */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng cho form */
+}
+/* Đặt kiểu cho các radio và nhãn ngang hàng */
+.radio-group {
+    display: flex; /* Sử dụng flexbox để tạo hàng ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin-bottom: 10px; /* Khoảng cách dưới mỗi nhóm radio */
+}
+.custom-dropdown {
+    width: 100%; /* Đặt chiều rộng 100% để chiếm toàn bộ không gian */
+    padding: 10px; /* Thêm padding để làm cho dropdown lớn hơn */
+    font-size: 16px; /* Tăng kích thước font để dễ đọc */
+    border: 1px solid #ccc; /* Đường viền cho dropdown */
+    border-radius: 5px; /* Bo góc cho dropdown */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng bóng cho dropdown */
 }
 
-/* Container chính */
-.container {
-    display: grid;
-    grid-template-columns: 1fr; /* Số cột: 1 */
-    gap: 20px; /* Khoảng cách giữa các phần tử */
-    padding: 40px; /* Padding cho container (cách rìa màn hình) */
-    max-width: 800px; /* Chiều rộng tối đa */
-    margin: 40px auto; /* Canh giữa và tạo khoảng cách trên và dưới */
-    background-color: #fff; /* Màu nền cho container */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+.radio-group input[type="radio"] {
+    margin-right: 10px; /* Khoảng cách bên phải cho nút radio */
 }
 
-/* Các phần tử trong grid */
-h1, h2 {
-    text-align: center; /* Canh giữa tiêu đề */
-}
-
-/* Form nhập thông tin */
-form  {
-    display: grid;
-    gap: 15px; /* Khoảng cách giữa các trường nhập */
-}
+/* Đặt kiểu cho các nhãn */
 label {
-    padding-left: 50px;
+    display: flex; /* Hiển thị nhãn dưới dạng khối */
+    margin-bottom: 8px; /* Khoảng cách dưới nhãn */
+    font-weight: bold; /* Đậm cho nhãn */
 }
-/* Nút gửi */
+
+/* Đặt kiểu cho các trường nhập liệu */
+input[type="text"],
+input[type="file"] {
+    width: 100%; /* Chiều rộng đầy đủ */
+    padding: 10px; /* Khoảng cách bên trong trường nhập liệu */
+    border: 1px solid #ccc; /* Đường viền cho trường nhập liệu */
+    border-radius: 4px; /* Bo tròn các góc */
+    margin-bottom: 15px; /* Khoảng cách dưới trường nhập liệu */
+}
+
+/* Đặt kiểu cho vùng chứa nút */
+.button-container {
+    display: flex; /* Sử dụng flexbox để căn giữa */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    margin-top: 15px; /* Khoảng cách trên vùng chứa nút */
+}
+
+/* Đặt kiểu cho nút gửi và quay lại */
 button {
-    padding: 10px 15px; /* Padding cho nút */
-    background-color: #28a745; /* Màu nền cho nút */
-    color: white; /* Màu chữ */
-    border: none; /* Không viền */
-    border-radius: 5px; /* Bo góc */
-    cursor: pointer; /* Con trỏ chuột */
+    padding: 10px 15px; /* Khoảng cách bên trong nút */
+    background-color: #050606; /* Màu nền cho nút */
+    color: white; /* Màu chữ trắng */
+    border: none; /* Bỏ đường viền */
+    border-radius: 4px; /* Bo tròn các góc */
+    cursor: pointer; /* Hiệu ứng con trỏ khi hover */
+    margin: 0 5px; /* Khoảng cách giữa các nút */
 }
 
 button:hover {
-    background-color: #218838; /* Màu nền khi hover */
+    background-color: #d18915; /* Thay đổi màu khi hover */
 }
 
-/* Hình ảnh được tải lên */
+/* Hiệu ứng fade-in cho các bước */
+.fade-in {
+    opacity: 0; /* Bắt đầu với độ trong suốt 0 */
+    animation: fadeIn 0.5s forwards; /* Áp dụng hiệu ứng fadeIn */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Bắt đầu với độ trong suốt 0 */
+    }
+    to {
+        opacity: 1; /* Kết thúc với độ trong suốt 1 */
+    }
+}
+
+/* Định dạng cho hình ảnh đã tải lên */
 img {
-    max-width: 100%; /* Chiều rộng tối đa cho hình ảnh */
-    height: auto; /* Tự động điều chỉnh chiều cao */
+    margin-top: 10px; /* Khoảng cách trên hình ảnh */
+     /* Đường viền cho hình ảnh */
+    border-radius: 4px; /* Bo tròn các góc */
 }
 
-.custom .label{
-    padding-left: 10px;
+.input-group {
+    display: flex; /* Sử dụng Flexbox để bố trí */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.input-group input[type="text"] {
+    flex: 1; /* Để input chiếm toàn bộ không gian có sẵn */
+    margin-right: 10px; /* Khoảng cách giữa input và dropdown */
+}
+
+.input-group select {
+    flex: 0 0 auto; /* Dropdown giữ kích thước tự nhiên */
 }

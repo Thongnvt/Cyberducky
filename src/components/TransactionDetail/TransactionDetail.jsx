@@ -98,7 +98,7 @@ const TransactionDetail = () => {
                 // Open success modal directly if COD is selected
                 setIsModalOpen(true); // Open success modal
                 clearCart(); // Clear the cart upon successful order
-
+                console.log('Đặt hàng thành công lúc:', new Date().toISOString());
                 // Navigate to success page after a short delay
                 setTimeout(() => {
                     navigate('/success'); // Navigate to the success page after a short delay
@@ -112,6 +112,7 @@ const TransactionDetail = () => {
             if (response.status === 200) {
                 setIsModalOpen(true); // Open success modal
                 clearCart(); // Clear the cart upon successful order
+                console.log('Đặt hàng thành công lúc:', new Date().toISOString());
                 setTimeout(() => {
                     navigate('/success'); // Navigate to the success page after a short delay
                 }, 2000); // 2 seconds delay
