@@ -21,7 +21,7 @@ const ProductList = ({ title }) => {
     const [totalPages, setTotalPages] = useState(1);
     const { addToCart } = useContext(CartContext);
     const { user } = useContext(UserContext); // Get user from context
-
+    const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
 
@@ -34,6 +34,8 @@ const ProductList = ({ title }) => {
                 setTotalPages(response.data.data['total-page']);
             } catch (error) {
                 console.error('Error fetching products:', error);
+            } finally {
+                setLoading(false); // Set loading to false after fetching
             }
         };
 
@@ -67,6 +69,14 @@ const ProductList = ({ title }) => {
     };
 
     const handleCloseModal = () => setShowModal(false);
+
+    if (loading) {
+        return <div>Loading...</div>; // Display loading indicator
+    }
+
+    if (!Array.isArray(products) || products.length === 0) {
+        return <div>No products available</div>;
+    }
 
     return (
         <section className="my-4">

@@ -14,6 +14,7 @@ const AdminDashboard = () => {
           <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
           <Nav.Link as={Link} to="/orders">Quản lý đơn hàng</Nav.Link>
           <Nav.Link as={Link} to="/customers">Quản lý khách hàng</Nav.Link>
+          <Nav.Link as={Link} to="/products-manage">Quản lý sản phẩm</Nav.Link>
         </Nav>
       </Navbar>
 
