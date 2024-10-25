@@ -29,9 +29,9 @@ const ProductList = ({ title }) => {
         const fetchProducts = async (page) => {
             try {
                 const response = await axios.get(`https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/products/type?page=${page}&pageSize=12&idtype=2`);
-                setProducts(response.data.data['list-data']);
-                setOriginalProducts(response.data.data['list-data']);
-                setTotalPages(response.data.data['total-page']);
+                setProducts(response.data.data.listData || []);
+                setOriginalProducts(response.data.data.listData || []);
+                setTotalPages(response.data.data.totalPage || 1);
             } catch (error) {
                 console.error('Error fetching products:', error);
             } finally {
@@ -64,7 +64,7 @@ const ProductList = ({ title }) => {
 
         // Proceed to add to cart if user is logged in
         addToCart(product); // Add product to cart
-        setModalMessage(`${product['name-product']} đã được thêm vào giỏ hàng.`); // Success message
+        setModalMessage(`${product['nameProduct']} đã được thêm vào giỏ hàng.`); // Success message
         setShowModal(true); // Show success modal
     };
 
@@ -83,30 +83,35 @@ const ProductList = ({ title }) => {
                 <h2 className="text-center mb-4">KEYCAP LẺ</h2>
                 <CheckExample onChange={(checked) => handleSort(checked)} />
                 <Row className="g-4">
-                    {products.map((product) => (
-                        <Col key={product.id} md={3} sm={4} xs={12}>
-                            <Link to={`/product/${slugify(product['name-product'])}`}>
-                                <Card className="h-100">
-                                    <Card.Img variant="top" src={product['image-urls'][0]} alt={product['name-product']} className="card-img-top" />
-                                    <Card.Body>
-                                        <Card.Title>{product['name-product']}</Card.Title>
-                                        <Card.Text>{product.price} VND</Card.Text>
-                                        <Button
-                                            variant="custom"
-                                            className="btn-custom"
-                                            onClick={(e) => {
-                                                handleAddToCart(product, e);
-                                            }}
-                                        >
-                                            Add to cart
-                                        </Button>
-                                    </Card.Body>
-                                </Card>
-                            </Link>
-                        </Col>
-                    ))}
-                </Row>
+                    {products.map((product) => {
+                        console.log(product);
+                        const productName = product['nameProduct'] || 'default-name'; // Sử dụng tên mặc định nếu không có name-product
+                        const imageUrl = product['imageUrls'] && product['imageUrls'][0] ? product['imageUrls'][0] : 'path/to/default-image.jpg'; // Sử dụng ảnh mặc định nếu không có image-urls
 
+                        return (
+                            <Col key={product.id} md={3} sm={4} xs={12}>
+                                <Link to={`/product/${slugify(productName)}`}>
+                                    <Card className="h-100">
+                                        <Card.Img variant="top" src={imageUrl} alt={productName} className="card-img-top" />
+                                        <Card.Body>
+                                            <Card.Title>{productName}</Card.Title>
+                                            <Card.Text>{product.price} VND</Card.Text>
+                                            <Button
+                                                variant="custom"
+                                                className="btn-custom"
+                                                onClick={(e) => {
+                                                    handleAddToCart(product, e);
+                                                }}
+                                            >
+                                                Add to cart
+                                            </Button>
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
+                            </Col>
+                        );
+                    })}
+                </Row>
                 <PaginationComponent
                     totalPages={totalPages}
                     currentPage={currentPage}

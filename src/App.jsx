@@ -28,7 +28,7 @@ import SuccessPage from './components/TransactionDetail/TransactionSuccess';
 import Custom from './Pages/Custom/Custom';
 import CancelOrder from './components/TransactionDetail/TransactionCancel';
 
-import ProductManage from './components/Dashboard/ProductsManage';
+
 
 // Component to render Routes with Breadcrumb
 const AppContent = () => {
@@ -99,7 +99,7 @@ const AppContent = () => {
   };
 
   // Check if the current route is the Staff Page or Dashboard
-  const isStaffOrDashboardPage = location.pathname === '/login/staff' || location.pathname === '/dashboard' || location.pathname === '/orders' || location.pathname === '/customers' || location.pathname === '/products-manage';
+  const isStaffOrDashboardPage = location.pathname === '/login/staff' || location.pathname === '/dashboard' || location.pathname === '/orders' || location.pathname === '/customers';
 
   return (
     <div>
@@ -127,7 +127,7 @@ const AppContent = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/orders" element={<ManageOrders />} />
         <Route path="/customers" element={<ManageCustomers />} />
-        <Route path="/products-manage" element={<ProductManage />} />
+
         <Route path="/user-details" element={<UserDetails />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/success" element={<SuccessPage />} />
