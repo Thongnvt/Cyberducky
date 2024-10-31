@@ -55,7 +55,11 @@ const ProductList = ({ title }) => {
         }
     };
 
-    const handleAddToCart = (product, e) => {
+
+
+
+
+    const handleAddToCart = async (product, e) => {
         e.preventDefault();
         e.stopPropagation();
 
@@ -63,13 +67,45 @@ const ProductList = ({ title }) => {
         if (!user) {
             setModalMessage('Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.'); // Alert message for not logged in
             setShowModal(true); // Show modal
+            console.log('Attempted to add product without login:', product)
             return;
         }
 
+        console.log('Attempting to add product to cart: ', {
+            id: product.id,
+            name: product['nameProduct'],
+            price: product.price,
+            imageUrl: product['imageUrls'] && product['imageUrls'][0] ? product['imageUrls'][0] : 'no image available'
+        })
+
+
+
         // Proceed to add to cart if user is logged in
-        addToCart(product); // Add product to cart
-        setModalMessage(`${product['nameProduct']} đã được thêm vào giỏ hàng.`); // Success message
-        setShowModal(true); // Show success modal
+        try {
+            const userId = user.id; // Get the user ID from context
+            const productId = product.id; // Get the product ID
+
+            // Call the API to add the product to the user's order
+            const response = await axios.post(`https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/orders/${userId}/${productId}`);
+            console.log(response.data);
+            // Check for a successful response
+
+            if (response.status === 200) {
+                const orderId = response.data.orderId; // Assuming the API returns an orderId
+                console.log(`Order ID: ${orderId}`);
+
+                addToCart(product); // Add product to cart
+                console.log(`Successfully added to cart: ID = ${product.id}, Name = ${product['nameProduct']}`);
+                setModalMessage(`${product['nameProduct']} đã được thêm vào giỏ hàng.`); // Success message
+            } else {
+                setModalMessage('Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng.'); // Error message
+            }
+        } catch (error) {
+            console.error('Error adding product to order:', error);
+            setModalMessage('Đã xảy ra lỗi, vui lòng thử lại sau.'); // Show error message
+        } finally {
+            setShowModal(true); // Show success or error modal
+        }
     };
 
     const handleCloseModal = () => setShowModal(false);

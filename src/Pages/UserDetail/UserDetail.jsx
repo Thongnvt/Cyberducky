@@ -18,6 +18,7 @@ const UserDetails = () => {
                 <p><strong>Tên tài khoản:</strong> {user.email.split('@')[0]}</p>
                 <p><strong>Số điện thoại:</strong> {user.phone || 'Chưa có thông tin'}</p>
                 <p><strong>Email:</strong> {user.email}</p>
+                <p><strong>ID:</strong> {user.id}</p>
             </div>
         </div>
     );

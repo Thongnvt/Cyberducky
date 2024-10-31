@@ -13,31 +13,32 @@ export const CartProvider = ({ children }) => {
     const addToCart = (product) => {
         setCart((prevCart) => {
             const newCart = [...prevCart, product];
-            localStorage.setItem('cart', JSON.stringify(newCart)); // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(newCart)); // Cập nhật localStorage
             return newCart;
         });
     };
 
     const removeFromCart = (productId) => {
         setCart((prevCart) => {
-            const newCart = prevCart.filter(item => item.id !== productId);
-            localStorage.setItem('cart', JSON.stringify(newCart)); // Save to localStorage
+            const newCart = prevCart.filter(item => item.productId !== productId);
+            localStorage.setItem('cart', JSON.stringify(newCart)); // Cập nhật localStorage
             return newCart;
         });
     };
+
+
     const clearCart = () => {
-        setCart([]); // Clear the cart state
-        localStorage.removeItem('cart'); // Clear the cart from local storage
+        setCart([]);
+        localStorage.removeItem('cart');
     };
 
-
-    // Optional: Sync state with localStorage when the component mounts
+    // Sync cart with localStorage whenever it changes
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
     }, [cart]);
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
+        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, clearCart }}>
             {children}
         </CartContext.Provider>
     );

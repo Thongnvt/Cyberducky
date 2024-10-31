@@ -2,8 +2,10 @@ import React, { useState, useContext, useEffect } from 'react';
 import { CartContext } from '../../Pages/Cart/CartContext'; // Context to get cart items
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import axios from 'axios';
+import { UserContext } from '../../Pages/Login/UserContext';
 import { Modal } from 'react-bootstrap'; // Import the success modal
 import './TransactionDetail.css'; // Assume this CSS file exists for styling
+import { QRCode } from 'qrcode.react';
 
 const SuccessModal = ({ isOpen, onClose }) => (
     <Modal show={isOpen} onHide={onClose}>
@@ -32,7 +34,12 @@ const CancelOrderModal = ({ isOpen, onClose, onConfirm }) => (
 
 const TransactionDetail = () => {
     const navigate = useNavigate(); // Initialize useNavigate hook for navigation
+
+
     const { cart, clearCart } = useContext(CartContext); // Retrieve cart and clearCart from CartContext
+    const { user } = useContext(UserContext);
+    const userId = user.id;
+    const [orderId, setOrderId] = useState(null);
     const [customerInfo, setCustomerInfo] = useState({
         email: '',
         fullName: '',
@@ -47,8 +54,39 @@ const TransactionDetail = () => {
     const [totalCost, setTotalCost] = useState(0);
     const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
     const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+    const [loading, setLoading] = useState(true);
 
+    console.log('Order ID from cart:', orderId);
     // Calculate total cost when cart updates
+
+
+    useEffect(() => {
+        const fetchCurrentOrderIdAndProducts = async () => {
+            try {
+                const response = await axios.get(`https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/orders/customer/${userId}`);
+                console.log('API Response:', response.data); // Log the API response
+
+                // Extract products and orderId from the response
+                if (response.data && response.data.data.product && response.data.data.product.length > 0) {
+                    // Set products to state
+
+                    // Extracting orderId from the first product
+                    const firstProduct = response.data.data.product[0];
+                    setOrderId(firstProduct.orderId); // Set orderId from the first product
+                    console.log('Order ID:', firstProduct.orderId); // Log the order ID
+                } else {
+                    console.error('No orders found for this user.');
+                }
+            } catch (error) {
+                console.error('Error fetching cart products:', error);
+            } finally {
+                setLoading(false); // Set loading to false when done
+            }
+        };
+
+        fetchCurrentOrderIdAndProducts(); // Call the function to fetch order details
+    }, [userId]);
+
     useEffect(() => {
         if (Array.isArray(cart)) {
             const total = cart.reduce((acc, item) => acc + item.price, 0);
@@ -84,6 +122,9 @@ const TransactionDetail = () => {
             return;
         }
 
+
+
+
         // Create order payload for API call
         const orderData = {
             customer: customerInfo,
@@ -91,39 +132,76 @@ const TransactionDetail = () => {
             totalCost: totalCost,
             paymentMethod: paymentMethod,
         };
+        if (!orderId) {
+            alert('Order ID không hợp lệ. Vui lòng kiểm tra lại.');
+            return;
+        }
+
+
+        if (!orderId) {
+            alert('Order ID không hợp lệ. Vui lòng kiểm tra lại.');
+            return;
+        }
+
+        // If COD is selected, you can process the order without needing an API payment response
+        if (paymentMethod === "COD") {
+            // Open success modal directly if COD is selected
+            setIsModalOpen(true); // Open success modal
+            clearCart(); // Clear the cart upon successful order
+            console.log('Đặt hàng thành công lúc:', new Date().toISOString());
+            // Navigate to success page after a short delay
+            setTimeout(() => {
+                navigate('/success'); // Navigate to the success page after a short delay
+            }, 2000); // 2 seconds delay
+
+            return; // Exit the function as no API call is needed for COD
+        }
 
         try {
-            // If COD is selected, you can process the order without needing an API payment response
-            if (paymentMethod === "COD") {
-                // Open success modal directly if COD is selected
-                setIsModalOpen(true); // Open success modal
-                clearCart(); // Clear the cart upon successful order
-                console.log('Đặt hàng thành công lúc:', new Date().toISOString());
-                // Navigate to success page after a short delay
-                setTimeout(() => {
-                    navigate('/success'); // Navigate to the success page after a short delay
-                }, 2000); // 2 seconds delay
+            // Gửi yêu cầu lấy liên kết thanh toán từ PayOS nếu phương thức thanh toán là PayOS
+            if (paymentMethod === "PayOS") {
 
-                return; // Exit the function as no API call is needed for COD
-            }
+                const successUrl = '/success'; // Link for successful payment redirection
+                const cancelUrl = '/cancel';
+                console.log('Sending API request with:', { orderId, userId, cancelUrl: cancelUrl, returnUrl: successUrl });
+                const paymentLinkResponse = await axios.post('https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/orders/create', {
+                    orderId: orderId, // Sử dụng orderId đã có
+                    userId: userId, // Sử dụng userId từ context
+                    cancelUrl: cancelUrl,
+                    returnUrl: successUrl,
+                });
+                console.log('Payment Link Response:', paymentLinkResponse.data);
 
-            // For other payment methods, make the API call
-            const response = await axios.post('YOUR_API_ENDPOINT/orders', orderData); // Replace with your API endpoint
-            if (response.status === 200) {
-                setIsModalOpen(true); // Open success modal
-                clearCart(); // Clear the cart upon successful order
-                console.log('Đặt hàng thành công lúc:', new Date().toISOString());
-                setTimeout(() => {
-                    navigate('/success'); // Navigate to the success page after a short delay
-                }, 2000); // 2 seconds delay
-            } else {
-                alert('Đặt hàng không thành công. Vui lòng thử lại.');
+
+                if (paymentLinkResponse.status === 200) {
+                    const checkoutUrl = paymentLinkResponse.data.data.checkoutUrl;
+                    const qrCode = paymentLinkResponse.data.data.qrCode; // Lấy QR code từ phản hồi
+                    const paymentLinkId = paymentLinkResponse.data.data.paymentLinkId;// Giả sử phản hồi chứa paymentUrl
+
+
+                    console.log('Checkout URL:', checkoutUrl);
+                    console.log('QR Code Data:', qrCode);
+                    console.log('Payment Link ID:', paymentLinkId);
+
+                    if (checkoutUrl) {
+                        // Chuyển hướng đến checkout URL
+                        window.location.href = checkoutUrl; // Redirect to the payment URL
+                    } else {
+                        alert('Liên kết thanh toán không hợp lệ.');
+                    }
+                } else {
+                    alert('Không thể tạo liên kết thanh toán. Vui lòng thử lại.');
+                }
             }
         } catch (error) {
             console.error('Error placing order:', error);
             alert('Có lỗi xảy ra trong quá trình đặt hàng.');
         }
     };
+
+    // For other payment methods, make the API call
+    // Replace with your API endpoint
+
 
     const handleCancelOrder = () => {
         setIsCancelModalOpen(true); // Show the cancel confirmation modal
@@ -239,11 +317,11 @@ const TransactionDetail = () => {
                         <input
                             type="radio"
                             name="paymentMethod"
-                            value="MoMo"
+                            value="PayOS"
                             onChange={(e) => setPaymentMethod(e.target.value)}
                             required
                         />
-                        Thanh toán qua MoMo
+                        Thanh toán qua PayOS
                     </label>
                     <label>
                         <input

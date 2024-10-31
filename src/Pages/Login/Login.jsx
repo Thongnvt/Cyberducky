@@ -6,6 +6,9 @@ import axios from 'axios';
 import { UserContext } from './UserContext';
 import './Login.css';
 import Modal from 'react-bootstrap/Modal';
+import { jwtDecode } from 'jwt-decode';
+
+
 
 function TextControlsExample() {
     const [email, setEmail] = useState('');
@@ -32,9 +35,27 @@ function TextControlsExample() {
                 email,
                 password
             });
+            console.log(response.data);
 
             if (response.status === 200 && response.data.success) {
-                const userData = { email, id: response.data.id, token: response.data.token };
+                const token = response.data.token; // Lấy token từ phản hồi
+                const decoded = jwtDecode(token);
+                console.log('Decoded JWT:', decoded)// Giải mã token để lấy thông tin
+
+
+                const userId = decoded.Id; // This should retrieve the id
+                if (userId === undefined) {
+                    setModalMessage('ID không tồn tại trong token.');
+                    setShowModal(true);
+                    return;
+                }
+
+
+
+                const userData = { email, id: userId, token };
+                console.log("Đăng nhập thành công:", userData);
+
+
                 setUser(userData);
                 localStorage.setItem('user', JSON.stringify(userData));
                 setModalMessage('Đăng nhập thành công! Bạn sẽ được chuyển đến trang chủ trong giây lát.');

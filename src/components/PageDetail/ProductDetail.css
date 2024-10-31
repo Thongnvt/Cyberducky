@@ -1,91 +1,91 @@
 .product-detail-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px; /* Sets a maximum width for the container */
+    margin: 0 auto; /* Centers the container horizontally */
 }
 
 .product-image {
-    width: 70%;
-    border-radius: 100px;
-    border: 2px solid black;
-    padding: 1px;
-    object-fit: cover;
-    margin-left: 10%;
-    
+    width: 100%; /* Makes the image responsive */
+    border-radius: 100px; /* Rounds the corners of the image */
+    border: 200px solid rgb(182, 178, 178); /* Adds a solid border around the image */
+    padding: 5px; /* Adds space between the border and the image */
 }
 
 .product-name {
-    font-family: 'Montserrat',sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Sets the font for the product name */
 }
+
 .product-price {
-    color: #FF9900;
-    font-size: 24px;
-    font-weight: bold;
-    font-family: 'Montserrat',sans-serif;
+    color: #FF9900; /* Sets the price color */
+    font-size: 24px; /* Increases the font size */
+    font-weight: bold; /* Makes the font bold */
+    font-family: 'Montserrat', sans-serif; /* Sets the font family */
 }
-p,h3,h4,h5,.add-to-cart-button,.description-box{
-    font-family: 'Montserrat',sans-serif;
+
+p, h3, h4, h5, .add-to-cart-button, .description-box {
+    font-family: 'Montserrat', sans-serif; /* Applies the Montserrat font to various elements */
 }
+
 .variant-selection p,
 .quantity-selection p {
-    margin-bottom: 0;
-    font-weight: bold;
+    margin-bottom: 0; /* Removes bottom margin for clean spacing */
+    font-weight: bold; /* Makes the text bold for emphasis */
 }
 
 .variant-button {
-    margin-right: 10px;
-    margin-top: 10px;
+    margin-right: 10px; /* Adds space between variant buttons */
+    margin-top: 10px; /* Adds top margin for spacing */
 }
 
 .quantity-input {
-    width: 60px;
-    text-align: center;
+    width: 60px; /* Sets a fixed width for quantity input */
+    text-align: center; /* Centers the text within the input */
 }
 
 .mota {
-    font-size: 20px;
+    font-size: 20px; /* Increases font size for description */
 }
 
 .sanphamlienquan {
-    margin-top: 50px;
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
+    margin-top: 50px; /* Adds top margin for spacing above related products */
+    text-align: center; /* Centers the text */
+    font-size: 25px; /* Increases font size */
+    font-weight: bold; /* Makes the text bold */
 }
 
 .add-to-cart-button {
-    margin-top: 20px;
-    background-color: #FF9900;
-    border: none;
+    margin-top: 20px; /* Adds top margin for spacing */
+    background-color: #FF9900; /* Sets a background color for the button */
+    border: none; /* Removes the default border */
 }
 
 .description-box {
-    border: 2px solid #ddd;
-    border-radius: 30px;
-    padding: 20px;
-    height: 200px;
-    margin-top: 20px;
-    border: 2px solid black;
+    border: 2px solid #ddd; /* Sets a light gray border */
+    border-radius: 30px; /* Rounds the corners of the box */
+    padding: 20px; /* Adds padding inside the box */
+    height: 200px; /* Sets a fixed height for the description box */
+    margin-top: 20px; /* Adds top margin for spacing */
+    border: 2px solid black; /* Adds a solid black border on top of the gray border */
 }
 
 .related-products {
-    margin-top: 20px;
+    margin-top: 20px; /* Adds top margin for spacing */
 }
 
 .related-products .card {
-    cursor: pointer;
-    border-radius: 30px;
-    height: 150px;
-    width: 150px;
-    margin-bottom: 50px;
-    padding-top: 50px;
-    margin-top: 30px;
-    border: 2px solid black;
-    justify-content: center;
-    margin-left: 60px;
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    border-radius: 30px; /* Rounds the corners of the card */
+    height: 150px; /* Sets a fixed height for the card */
+    width: 150px; /* Sets a fixed width for the card */
+    margin-bottom: 50px; /* Adds bottom margin for spacing between cards */
+    padding-top: 50px; /* Adds padding at the top of the card */
+    margin-top: 30px; /* Adds top margin for spacing */
+    border: 2px solid black; /* Adds a solid black border */
+    justify-content: center; /* Centers content within the card */
+    margin-left: 60px; /* Adds left margin for spacing */
 }
 
 .related-products .card-img-top {
-    border-radius: 10px;
-    height: 100%;
-    object-fit: cover;
+    border-radius: 10px; /* Rounds the corners of the card image */
+    height: 100%; /* Sets image height to fill the card */
+    object-fit: cover; /* Ensures the image covers the entire area while maintaining aspect ratio */
 }
