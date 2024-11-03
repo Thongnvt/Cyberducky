@@ -4,10 +4,10 @@
 }
 
 .product-image {
-    width: 100%; /* Makes the image responsive */
+    width: 70%; /* Makes the image responsive */
     border-radius: 100px; /* Rounds the corners of the image */
-    border: 200px solid rgb(182, 178, 178); /* Adds a solid border around the image */
-    padding: 5px; /* Adds space between the border and the image */
+   
+    padding: 10px; /* Adds space between the border and the image */
 }
 
 .product-name {
