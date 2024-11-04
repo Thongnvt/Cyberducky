@@ -48,8 +48,8 @@ function TextControlsExample() {
             const payload = {
                 email: formData.email,
                 password: formData.password,
-                "full-name": formData.fullName, // Map fullName to full-name
-                "telephone-number": formData.phoneNumber // Map phoneNumber to telephone-number
+                fullName: formData.fullName, // Map fullName to full-name
+                telephoneNumber: formData.phoneNumber // Map phoneNumber to telephone-number
             };
 
             const response = await axios.post('https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/authentication/register', payload);

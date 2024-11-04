@@ -161,8 +161,8 @@ const TransactionDetail = () => {
             // Gửi yêu cầu lấy liên kết thanh toán từ PayOS nếu phương thức thanh toán là PayOS
             if (paymentMethod === "PayOS") {
 
-                const successUrl = '/success'; // Link for successful payment redirection
-                const cancelUrl = '/cancel';
+                const successUrl = 'https://cyberducky-thongnvts-projects.vercel.app/success'; // Link for successful payment redirection
+                const cancelUrl = 'https://cyberducky-thongnvts-projects.vercel.app/cancel-success';
                 console.log('Sending API request with:', { orderId, userId, cancelUrl: cancelUrl, returnUrl: successUrl });
                 const paymentLinkResponse = await axios.post('https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/orders/create', {
                     orderId: orderId, // Sử dụng orderId đã có
