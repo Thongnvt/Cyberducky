@@ -31,7 +31,7 @@ function TextControlsExample() {
         setLoading(true); // Start loading
 
         try {
-            const response = await axios.post('https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/authentication/login', {
+            const response = await axios.post('https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/login/login', {
                 email,
                 password
             });

@@ -52,7 +52,7 @@ function TextControlsExample() {
                 telephoneNumber: formData.phoneNumber // Map phoneNumber to telephone-number
             };
 
-            const response = await axios.post('https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/authentication/register', payload);
+            const response = await axios.post('https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/login/register', payload);
             console.log('Registration successful:', response.data);
             // Handle success (e.g., redirect or show a success message)
             window.alert('Đăng ký thành công!');
