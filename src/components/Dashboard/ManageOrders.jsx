@@ -11,11 +11,15 @@ const AdminDashboard = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch orders from the API
     const fetchOrders = async () => {
       try {
         const response = await axios.get('https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/orders/all');
-        setOrders(response.data);
+        const updatedOrders = response.data.map((order) => ({
+          ...order,
+          // Update status based on paymentDate presence
+          status: order.paymentDate ? 1 : 3 // "Đang xử lý" if paid, "Đã hủy" if not paid or failed
+        }));
+        setOrders(updatedOrders);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -29,20 +33,17 @@ const AdminDashboard = () => {
   const handleOrderStatusChange = async (orderId, newStatus, event) => {
     event.stopPropagation();
     try {
-      // Optimistic UI update
       setOrders((prevOrders) =>
         prevOrders.map((order) =>
           order.id === orderId ? { ...order, status: newStatus } : order
         )
       );
 
-      // Send PATCH request to update status
       await axios.patch(`https://cyberducky-gtbsaceffbhthhc5.eastus-01.azurewebsites.net/api/orders/${orderId}/status`, {
-        status: newStatus
+        status: newStatus,
       });
     } catch (error) {
       console.error('Error updating order status:', error);
-      // Revert to previous state if the request fails
       setOrders((prevOrders) =>
         prevOrders.map((order) =>
           order.id === orderId ? { ...order, status: order.status } : order
@@ -55,7 +56,6 @@ const AdminDashboard = () => {
     setExpandedOrderId(expandedOrderId === orderId ? null : orderId);
   };
 
-  // Map numeric status to readable text
   const getStatusText = (status) => {
     switch (status) {
       case 1: return 'Đang xử lý';
@@ -94,10 +94,10 @@ const AdminDashboard = () => {
                 <td>{getStatusText(order.status)}</td>
                 <td>
                   <Button
-                    onClick={(event) => handleOrderStatusChange(order.id, 2, event)}
+                    onClick={(event) => handleOrderStatusChange(order.id, 1, event)}
                     variant="success"
                   >
-                    Đánh dấu đã giao
+                    Đánh dấu đang xử lý
                   </Button>
                   <Button
                     onClick={(event) => handleOrderStatusChange(order.id, 3, event)}
