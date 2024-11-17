@@ -94,10 +94,10 @@ const AdminDashboard = () => {
                 <td>{getStatusText(order.status)}</td>
                 <td>
                   <Button
-                    onClick={(event) => handleOrderStatusChange(order.id, 1, event)}
+                    onClick={(event) => handleOrderStatusChange(order.id, 2, event)} // Change to status 2 for 'Đã giao'
                     variant="success"
                   >
-                    Đánh dấu đang xử lý
+                    Đã giao
                   </Button>
                   <Button
                     onClick={(event) => handleOrderStatusChange(order.id, 3, event)}

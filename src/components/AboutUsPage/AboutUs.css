@@ -1,21 +1,55 @@
 .image-aboutus {
-    position: relative;
-    display: block;
-    text-align: center; /* Căn giữa hình ảnh */
-  }
-  
-  .image-aboutus img {
-    max-width: 80%; /* Hình ảnh sẽ không vượt quá 100% của container */
-    width: 80%; /* Kích thước tự động */
-    height: auto; /* Đảm bảo tỷ lệ gốc */
-    margin: 0 auto; /* Căn giữa hình ảnh */
-    padding-bottom: 50px;
-  }
-  .text-aboutus {
-    font-family: 'Montserrat',sans-serif;
-    font-size: 40px;
-    margin-bottom: 700px;
-    font-weight: bold;
-    padding-left: 25%;
-    padding-right: 25%;
-  }
+  position: relative;
+  display: block;
+  text-align: center; /* Căn giữa hình ảnh */
+}
+
+.image-aboutus img {
+  max-width: 80%; /* Hình ảnh sẽ không vượt quá 80% của container */
+  width: 80%; /* Kích thước tự động */
+  height: auto; /* Đảm bảo tỷ lệ gốc */
+  margin: 0 auto; /* Căn giữa hình ảnh */
+  padding-bottom: 50px;
+}
+
+.text-aboutus1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+  margin-bottom: 70px;
+  font-weight: bold;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+.text-aboutus2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  margin-bottom: 50px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* Thêm phần CSS cho contact-info */
+.contact-info {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  text-align: center; /* Căn giữa nội dung liên hệ */
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.contact-info p {
+  margin: 5px 0;
+
+}
+
+.contact-info a {
+  color: #000; /* Màu sắc tùy chỉnh */
+  text-decoration: none;
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
