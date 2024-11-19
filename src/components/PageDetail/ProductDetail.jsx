@@ -6,6 +6,29 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import slugify from '../../utils/slugify'; // Import slugify function
 
+const mapTypeProduct = (typeId) => {
+    const types = {
+        1: 'Decal',
+        2: 'Keycap lẻ',
+        3: 'Keycap bộ',
+    };
+    return types[typeId] || 'Không rõ';
+};
+
+// Hàm ánh xạ colorId
+const mapColorId = (colorId) => {
+    const colors = {
+        1: 'Đỏ',
+        2: 'Trắng',
+        3: 'Xanh lá',
+        4: 'Vàng',
+        5: 'Xanh dương',
+        6: 'Cam',
+        7: 'Đen',
+    };
+    return colors[colorId] || 'Không rõ';
+};
+
 const ProductDetail = () => {
     const [quantity, setQuantity] = useState(1);
     const [variant, setVariant] = useState('Text');
@@ -106,11 +129,22 @@ const ProductDetail = () => {
                     </Button>
                 </Col>
             </Row>
+
             <Row className="my-4">
                 <Col>
-                    <h5 className='mota'>MÔ TẢ</h5>
+                    <h5 className="mota">MÔ TẢ</h5>
                     <div className="description-box">
-                        {product.description || 'Thông tin chi tiết về sản phẩm'}
+                        {product ? (
+                            <div>
+                                <p><strong>Tên sản phẩm:</strong> {product.nameProduct}</p>
+                                <p><strong>Giá:</strong> {product.price} VND</p>
+                                <p><strong>Màu sắc:</strong> {mapColorId(product.colorId)}</p>
+                                <p><strong>Loại sản phẩm:</strong> {mapTypeProduct(product.typeProductId)}</p>
+
+                            </div>
+                        ) : (
+                            'Thông tin chi tiết về sản phẩm chưa có'
+                        )}
                     </div>
                 </Col>
             </Row>
